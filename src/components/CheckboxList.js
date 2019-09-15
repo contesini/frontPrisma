@@ -8,6 +8,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import CommentIcon from '@material-ui/icons/Comment';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import data from './static'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,6 +26,17 @@ const useStyles = makeStyles(theme => ({
 
 export default function CheckboxList(props) {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [dialogValue, setDialogValue] = React.useState({ title: "", content: "" });
+
+  const handleClickOpen = (value) => {
+    setOpen(true);
+    setDialogValue(value)
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+  }
   const [checked, setChecked] = React.useState([]);
 
   const handleToggle = value => () => {
@@ -33,43 +51,53 @@ export default function CheckboxList(props) {
     setChecked(newChecked);
     props.setInitialOptions(newChecked);
   };
-  const data = [
-  {key:0,title:"Aviso Prévio", content:"Quando uma das partes deseja finalizar o contrato de traba."},
-  {key:1,title:"Multa do Artigo nº477 da CLT", content:"Quando uma das partes deseja finalizar o contrato de traba."},
-  {key:2,title:"Multa de 40% do FGTS", content:"Quando uma das partes deseja finalizar o contrato de traba."},
-  {key:3,title:"Multa do Artigo nº 467 CLT", content:"Quando uma das partes deseja finalizar o contrato de traba."},
-  {key:4,title:"Férias Proporcionais / Vencidas", content:"Quando uma das partes deseja finalizar o contrato de traba."},
-  {key:5,title:"13º Salário Proporcional / Vencido", content:"Quando uma das partes deseja finalizar o contrato de traba."},
-  {key:6,title:"Saldo do Salário", content:"Quando uma das partes deseja finalizar o contrato de traba."},
-  ]
   return (
-    <List >
-      {data.map(value => {
-        const labelId = `checkbox-list-label-${value.key}`;
+    <div>
+      <List >
+        {data.map(value => {
+          const labelId = `checkbox-list-label-${value.key}`;
 
-        return (
-          <ListItem key={value.key} role={undefined} dense button onClick={handleToggle(value.key)}>
-            <ListItemIcon>
-              <Checkbox
-                edge="start"
-                checked={checked.indexOf(value.key) !== -1}
-                tabIndex={-1}
-                disableRipple
-                inputProps={{ 'aria-labelledby': labelId }}
-              />
-            </ListItemIcon>
-            <div>
-              <h1>{value.title}</h1>
-              <p>{value.content}</p>
-            </div>
-            <ListItemSecondaryAction onClick={()=>alert('OK')}>
-              <IconButton edge="end" aria-label="comments">
-                <CommentIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
-        );
-      })}
-    </List>
+          return (
+            <ListItem key={value.key} role={undefined} dense button onClick={handleToggle(value.key)}>
+              <ListItemIcon>
+                <Checkbox
+                  edge="start"
+                  checked={checked.indexOf(value.key) !== -1}
+                  tabIndex={-1}
+                  disableRipple
+                  inputProps={{ 'aria-labelledby': labelId }}
+                />
+              </ListItemIcon>
+              <div>
+                <h1>{value.title}</h1>
+              </div>
+              <ListItemSecondaryAction onClick={() => handleClickOpen(value)}>
+                <IconButton edge="end" aria-label="comments">
+                  <CommentIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          );
+        })}
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{dialogValue.title}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              {dialogValue.content}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Fechar
+                  </Button>
+          </DialogActions>
+        </Dialog>
+      </List>
+    </div>
   );
 }
