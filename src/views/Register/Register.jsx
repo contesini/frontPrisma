@@ -47,27 +47,17 @@ const RegisterContent = (props) => {
         }
     })
     const onSubmit = async data => {
-        if (youAre === "" || expertises.length === 0) {
-            if (expertises.length === 0) {
-                setValidateExpertises("Please select this!")
-            }
-            if (youAre === "") {
-                setValidateYouAre("Please select this!")
-            }
-            return
-        }
-        console.log('formData', { ...data, expertises: expertises, youAre: youAre, avatar: await toBase64(image) })
-        const usr = { ...data, expertise: expertises, type: youAre }
-        setLoading(true)
-        createUser({ variables: { name: usr.name, email: usr.email, password: usr.password, expertise: usr.expertise, type: usr.type, avatar: await toBase64(image) } })
+       
+        console.log('formData', { ...data })
+        navigate('/judicializar')
+
     }; // callback when validation pass
     return (
         <Container maxWidth="sm">
             <Title>Informações de Cadastro</Title>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                <Dropzone reg={register} image={setImage} />
                 <FormInputs
-                    ncols={['12', '12', '6', '6', '6', '6', '12', '6', '6', '6', '6', '6']}
+                    ncols={['12', '12', '6', '6', '6', '6', '12', '6', '6', '6', '6', '6','6','12','6']}
                     properties={[
                         {
                             id: "name",
@@ -180,14 +170,56 @@ const RegisterContent = (props) => {
                             inputRef: register,
                             validation: {},
                             error: errors,
+                        },
+                        {
+                            id: "password",
+                            name: 'password',
+                            label: 'Senha',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
+                        },
+                        ,
+                        {
+                            id: "password",
+                            name: 'password',
+                            label: 'Senha',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
+                        },
+                        ,
+                        {
+                            id: "password",
+                            name: 'password',
+                            label: 'Senha',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
+                        },
+                        {
+                            id: "password",
+                            name: 'password',
+                            label: 'Senha',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
+                        },
+                        {
+                            id: "phone",
+                            name: 'phone',
+                            label: 'Telefone',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
                         }
                     ]}
                 />
-                <input type="hidden" name="avatar" ref={register} />
                 <h5>Você já tem cadastro? <a href="/login" >Acessar</a></h5>
                 <Button variant="contained" type='submit' >
-                    {loading ? <CircularProgress disableShrink /> : "Register"}
+                    {loading ? <CircularProgress disableShrink /> : "Confirmar Criação da Judicialização"}
                 </Button>
+                <br/><br/>
             </Form>
         </Container>
     );
@@ -195,7 +227,7 @@ const RegisterContent = (props) => {
 const Register = (props) => {
     return (<Layout
         backgroundColor=""
-        withAppBar={false}
+        withAppBar={true}
         menus={menus}
         withMenu={false}
         paddinTopMenu="5vh"

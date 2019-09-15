@@ -9,6 +9,7 @@ import Squads from '../views/Squads/Squads'
 import Awards from '../views/Awards/Awards'
 import Terms from '../views/Terms/Terms'
 import Reports from '../views/Reports/Reports'
+import Resultado from '../views/Resultado/Resultado'
 import Register from '../views/Register/Register'
 import Configurations from '../views/Configurations/Configurations'
 import ChangePasswordView from '../views/ChangePasswordView/ChangePasswordView'
@@ -27,4 +28,5 @@ export const routes = {
     '/configurations': () => <Configurations />,
     '/reports': () => <Reports />,
     '/register': () => <Register />,
+    '/judicializar': () => <Resultado />,
 }
