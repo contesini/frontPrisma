@@ -41,7 +41,9 @@ const ResultadoContent = (props) => {
            <br/>
             <br/>
             <div style={{display:'flex', flexDirection: 'row' }}>
-                <Button>Encaminhar acordo para o CEJUSC</Button>
+                <Button variant="primary">Encaminhar acordo para o CEJUSC</Button>
+                <Button variant="primary">Peticionar</Button>
+                <Button variant="primary">Acompanhar</Button>
             <Button></Button>
             </div>
             

@@ -10,6 +10,7 @@ import ChangePasswordView from '../views/ChangePasswordView/ChangePasswordView'
 export const routes = {
     '/login': () => <Login />,
     '/': () => <Home />,
+    '/register': () => <Register />,
     '/judicializar': () => <Resultado />,
 
 }
