@@ -12,6 +12,7 @@ import { CircularProgress, Container } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3, 2),
@@ -23,12 +24,27 @@ const ResultadoContent = (props) => {
     return (
         <div>
       <Paper className={classes.root}>
-        <Typography variant="h5" component="h3">
+        <Typography variant="h3" component="h3">
           Parabéns Joana da Silva, você teve seu direito à justiça garantido.
         </Typography>
-        <Typography component="p">
-          Paper can be used to build surface or other elements for your application.
+        <br/>
+        <Typography variant="h4" component="h4">
+          Abaixo seu número do processo:
         </Typography>
+        <br/>
+        <Typography  variant="h4" component="h4">
+         Processo n. 1000275-34.2019.5.02.9999
+        </Typography>
+        <br/>
+         <br/>
+          <br/>
+           <br/>
+            <br/>
+            <div style={{display:'flex', flexDirection: 'row' }}>
+                <Button>Encaminhar acordo para o CEJUSC</Button>
+            <Button></Button>
+            </div>
+            
       </Paper>
     </div>
  
