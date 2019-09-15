@@ -22,7 +22,7 @@ import { toBase64 } from '../../utils/utils';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import {Stepper, Paper} from '@material-ui/core';
+import { Stepper, Paper } from '@material-ui/core';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Typography from '@material-ui/core/Typography';
@@ -31,6 +31,9 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '90%',
+  },
+  paper: {
+    padding: theme.spacing(2, 1),
   },
   button: {
     marginRight: theme.spacing(1),
@@ -42,39 +45,47 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Content = (props) => {
-    const classes = useStyles();
-    const [activeStep, setActiveStep] = React.useState(0);
+  const classes = useStyles();
+  const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const [initialOptions, setInitialOptions] = useState([]);
   const getSteps = () => {
-  return ['O que é verba recisória?', 'Você quer conferir quais verbas?', 'Estimativa de valor', 'Tem interesse em entrar com um processo judicial?'];
-}
+    return ['O que é verba recisória?', 'Você quer conferir quais verbas?', 'Estimativa de valor', 'Tem interesse em entrar com um processo judicial?'];
+  }
   const steps = getSteps();
 
-  const  isStepOptional = (step) => {
+  const isStepOptional = (step) => {
     return step === 1;
   }
-  
 
-const getStepContent = (step) => {
-  switch (step) {
-    case 0:
-      return <React.Fragment>
-      <p>O que são verbas recisórias</p>
-      </React.Fragment>
-    case 1:
-      return <React.Fragment>
-      <p>{JSON.stringify(initialOptions)}</p>
-         <CheckboxList setInitialOptions={setInitialOptions} />
-      </React.Fragment>
-    case 2:
-      return 'This is the bit I really care about!';
+
+  const getStepContent = (step) => {
+    switch (step) {
+      case 0:
+        return (
+          <Paper className={classes.paper}>
+            <Typography component="p">
+              As verbas rescisórias são os valores devidos ao trabalhador por ocasião do término de seu contrato de trabalho. É o acerto final dos valores que você tem a receber quando sai da empresa, por exemplo: Aviso prévio Indenizado, 13º Salário proporcional, Férias Proporcionais, Saldo de Salário, Multa indenizatória de FGTS, Multas previstas na CLT por atraso.
+  Obs: A depender da modalidade de término do contrato, algumas dessas verbas exemplificadas não são aplicadas.
+          </Typography>
+          </Paper>)
+
+      case 1:
+        return <React.Fragment>
+          <CheckboxList setInitialOptions={setInitialOptions} />
+        </React.Fragment>
+      case 2:
+        return <React.Fragment>
+          <Paper className={classes.paper}>
+            
+          </Paper>
+        </React.Fragment>
       case 3:
-      return 'Sim';
-    default:
-      return 'Unknown step';
+        return 'Sim';
+      default:
+        return 'Unknown step';
+    }
   }
-}
   const isStepSkipped = (step) => {
     return skipped.has(step);
   }
@@ -135,54 +146,54 @@ const getStepContent = (step) => {
       <div>
         {activeStep === steps.length ? (
           <div>
-             {navigate('/register')}
+            {navigate('/register')}
             <Button onClick={handleReset} className={classes.button}>
               Reset
             </Button>
           </div>
         ) : (
-          <div>
-            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
             <div>
-              <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                Voltar
+              <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+              <div>
+                <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
+                  Voltar
               </Button>
 
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNext}
-                className={classes.button}
-              >
-                {activeStep === steps.length - 1 ? 'Sim' : 'Avançar'}
-              </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleNext}
+                  className={classes.button}
+                >
+                  {activeStep === steps.length - 1 ? 'Sim' : 'Avançar'}
+                </Button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
     </div>
   );
 }
 const Register = (props) => {
-    return (<Layout
-        backgroundColor=""
-        withAppBar={false}
-        menus={menus}
-        withMenu={false}
-        paddinTopMenu="5vh"
-        colors={colors}
-        textTopMenu="Register"
-        logo="https://www.trzcacak.rs/myfile/full/316-3169204_angry-panda-logo.png"
-        logoTxt="Panda"
-        logoStyle={{ width: '10%', height: '20%' }}
-        withLogout={false}
-        content={<Content {...props} />}
+  return (<Layout
+    backgroundColor=""
+    withAppBar={false}
+    menus={menus}
+    withMenu={false}
+    paddinTopMenu="5vh"
+    colors={colors}
+    textTopMenu="Register"
+    logo="https://www.trzcacak.rs/myfile/full/316-3169204_angry-panda-logo.png"
+    logoTxt="Panda"
+    logoStyle={{ width: '10%', height: '20%' }}
+    withLogout={false}
+    content={<Content {...props} />}
 
-    />);
+  />);
 }
 
 const mapStateToProps = state => ({
-    token: state.auth.token
+  token: state.auth.token
 })
 const mapDispatchToProps = dispatch => bindActionCreators({ authenticate }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(Register)
