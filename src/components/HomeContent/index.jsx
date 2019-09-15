@@ -27,6 +27,7 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,6 +35,10 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     padding: theme.spacing(2, 1),
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
   button: {
     marginRight: theme.spacing(1),
@@ -77,7 +82,33 @@ const Content = (props) => {
       case 2:
         return <React.Fragment>
           <Paper className={classes.paper}>
-            
+            <form>
+              <TextField
+                id="outlined-name"
+                label="Último dia trabalhado"
+                className={classes.textField}
+                value={'18/10/2019'}
+                margin="normal"
+                variant="outlined"
+              />
+              <TextField
+                id="outlined-name"
+                label="Último salario"
+                className={classes.textField}
+                value={'R$1001,53'}
+                margin="normal"
+                variant="outlined"
+              />
+              <TextField
+                id="outlined-name"
+                label="ESTIMATIVA"
+                className={classes.textField}
+                value={'R$600.92'}
+                margin="normal"
+                variant="outlined"
+                disabled
+              />
+            </form>
           </Paper>
         </React.Fragment>
       case 3:
