@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/hackathonprisma/static/js/main.9bc1fc6b.chunk.js",
+    "main.js.map": "/hackathonprisma/static/js/main.9bc1fc6b.chunk.js.map",
+    "runtime~main.js": "/hackathonprisma/static/js/runtime~main.a644eee6.js",
+    "runtime~main.js.map": "/hackathonprisma/static/js/runtime~main.a644eee6.js.map",
+    "static/css/2.2fe65d49.chunk.css": "/hackathonprisma/static/css/2.2fe65d49.chunk.css",
+    "static/js/2.2ce0f424.chunk.js": "/hackathonprisma/static/js/2.2ce0f424.chunk.js",
+    "static/js/2.2ce0f424.chunk.js.map": "/hackathonprisma/static/js/2.2ce0f424.chunk.js.map",
+    "static/js/3.9682b14f.chunk.js": "/hackathonprisma/static/js/3.9682b14f.chunk.js",
+    "static/js/3.9682b14f.chunk.js.map": "/hackathonprisma/static/js/3.9682b14f.chunk.js.map",
+    "index.html": "/hackathonprisma/index.html",
+    "precache-manifest.79232f9aacc0fc0ed9412d8c3abed899.js": "/hackathonprisma/precache-manifest.79232f9aacc0fc0ed9412d8c3abed899.js",
+    "service-worker.js": "/hackathonprisma/service-worker.js",
+    "static/css/2.2fe65d49.chunk.css.map": "/hackathonprisma/static/css/2.2fe65d49.chunk.css.map"
+  }
+}
