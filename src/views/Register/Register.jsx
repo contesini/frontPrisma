@@ -67,7 +67,7 @@ const RegisterContent = (props) => {
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Dropzone reg={register} image={setImage} />
                 <FormInputs
-                    ncols={['12', '12', '6', '6', '6']}
+                    ncols={['12', '12', '6', '6', '6', '6', '12', '6', '6', '6', '6', '6']}
                     properties={[
                         {
                             id: "name",
@@ -105,12 +105,84 @@ const RegisterContent = (props) => {
                             id: "numeroCarteiraDeTrabalho",
                             name: 'numeroCarteiraDeTrabalho',
                             label: 'Número da Carteira de Trabalho',
-                            inputRef: register
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
+                        },
+                        {
+                            id: "pis",
+                            name: 'pis',
+                            label: 'PIS',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
+                        },
+                        {
+                            id: "nomeDaMae",
+                            name: 'nomeDaMae',
+                            label: 'Nome da Mae',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
+                        },
+                        {
+                            id: "dataDeNascimento",
+                            name: 'dataDeNascimento',
+                            label: 'Data de Nascimento',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
+                        },
+                        {
+                            id: "streetAddress",
+                            name: 'streetAddress',
+                            label: 'Rua',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
+                        },
+                        {
+                            id: "addressNumber",
+                            name: 'addressNumber',
+                            label: 'Número',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
+                        },
+                        {
+                            id: "complement",
+                            name: 'complement',
+                            label: 'Complemento',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
+                        },
+                        {
+                            id: "neighborhood",
+                            name: 'neighborhood',
+                            label: 'Bairro',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
+                        },
+                        {
+                            id: "city",
+                            name: 'city',
+                            label: 'Cidade',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
+                        },
+                        {
+                            id: "state",
+                            name: 'state',
+                            label: 'Estado',
+                            inputRef: register,
+                            validation: {},
+                            error: errors,
                         }
                     ]}
                 />
-                <input type="hidden" name="youAre" />
-                <input type="hidden" name="expertises" />
                 <input type="hidden" name="avatar" ref={register} />
                 <h5>Você já tem cadastro? <a href="/login" >Acessar</a></h5>
                 <Button variant="contained" type='submit' >
