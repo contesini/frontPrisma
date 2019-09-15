@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     width: '90%',
   },
   paper: {
-    padding: theme.spacing(2, 1),
+    padding: theme.spacing(3, 2),
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -112,7 +112,18 @@ const Content = (props) => {
           </Paper>
         </React.Fragment>
       case 3:
-        return 'Sim';
+        return <React.Fragment>
+          <Paper className={classes.paper}>
+            <Typography align="center">
+              <b>Atenção: O ajuizamento de um processo é um negócio sério.</b> <br />
+            </Typography>
+            <Typography align="justify">
+              É seu direito prosseguir sem advogado. Acaso assim queira prosseguir, será iniciado seu processo, e distribuído a uma das Varas de Trabalho, e atribuída uma numeração processual. A empresa requerida será notificada da existência do processo para apresentar a sua versão de fatos, e marcada audiência a ser realizada no Foro trabalhista – momento em que, inclusive, é oportunizada às partes a realizar a conciliação.
+              Salienta-se, porém, que eventual insucesso na ação ajuizada pode gerar consequências como: pagamento de custas processuais e de honorários advocatícios de sucumbência.
+              Mais informações clique aqui. (pra algum texto grande explicando)
+          </Typography>
+          </Paper>
+        </React.Fragment>
       default:
         return 'Unknown step';
     }
